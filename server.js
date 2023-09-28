@@ -28,5 +28,27 @@ mongoose.connection.once("open", () => {
 });
 
 app.get("/logs/new", function (req, res) {
-  res.send("new");
+  res.render("src/views/New.jsx");
+});
+
+// post data to db
+app.post("/logs", async (req, res) => {
+  if (req.body.shipIsWrecked === "on") {
+    req.body.shipIsWrecked = true;
+  } else {
+    req.body.shipIsWrecked = false;
+  }
+  try {
+    const newFruit = await Fruit.create(req.body);
+    return res.redirect("/logs");
+  } catch (err) {
+    res.send(`error in adding ${req.body.name}`);
+    console.error(err);
+  }
+});
+
+app.listen(3000, () => {
+  console.log(Date())
+  console.log(`listening on port 3000`);
+  console.log(`http://localhost:3000/`);
 });
