@@ -7,6 +7,7 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 
 const jsxViewEngine = require("jsx-view-engine");
+app.set("views", "src/views");
 app.set("view engine", "jsx");
 app.engine("jsx", jsxViewEngine());
 
@@ -28,7 +29,7 @@ mongoose.connection.once("open", () => {
 });
 
 app.get("/logs/new", function (req, res) {
-  res.render("src/views/New.jsx");
+  res.render("New");
 });
 
 // post data to db
@@ -48,7 +49,7 @@ app.post("/logs", async (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log(Date())
+  console.log(Date());
   console.log(`listening on port 3000`);
   console.log(`http://localhost:3000/`);
 });
