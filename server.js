@@ -30,6 +30,16 @@ mongoose.connection.once("open", () => {
 
 const Log = require("./src/models/logSchema");
 
+// ROUTES
+app.get("/", async (req, res) => {
+  try {
+    const allLogs = await Fruit.find();
+    res.render("Index", { logs: allLogs });
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 app.get("/logs/new", function (req, res) {
   res.render("New");
 });
