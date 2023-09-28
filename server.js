@@ -28,6 +28,8 @@ mongoose.connection.once("open", () => {
   console.log("connected to mongo");
 });
 
+const Log = require("./src/models/logSchema");
+
 app.get("/logs/new", function (req, res) {
   res.render("New");
 });
@@ -43,7 +45,7 @@ app.post("/logs", async (req, res) => {
     const newLog = await Log.create(req.body);
     return res.redirect("/logs");
   } catch (err) {
-    res.send(`error in adding ${req.body.name}`);
+    res.send(`error in adding ${req.body}`);
     console.error(err);
   }
 });
