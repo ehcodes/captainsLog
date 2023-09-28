@@ -39,7 +39,7 @@ app.post("/logs", async (req, res) => {
     req.body.shipIsWrecked = false;
   }
   try {
-    const newFruit = await Fruit.create(req.body);
+    const newLog = await Log.create(req.body);
     return res.redirect("/logs");
   } catch (err) {
     res.send(`error in adding ${req.body.name}`);
