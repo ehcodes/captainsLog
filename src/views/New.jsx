@@ -1,5 +1,5 @@
 const React = require("react");
-const Generic = require("/layouts/Generic.jsx");
+const Generic = require("./layouts/Generic.jsx");
 
 const New = () => {
   return (
