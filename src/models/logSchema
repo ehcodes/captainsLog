@@ -1,0 +1,11 @@
+const mongoose = require("mongoose");
+
+const logSchema = new mongoose.Schema({
+  title: { type: String, required: true },
+  entry: { type: String, required: true },
+  shipIsWrecked: Boolean,
+});
+
+const Log = mongoose.model("Fruit", logSchema);
+
+module.exports = Log;
