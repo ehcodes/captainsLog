@@ -1,5 +1,5 @@
 const React = require("react");
-const Generic = require("../layouts/Generic.jsx");
+const Generic = require("./layouts/Generic.jsx");
 
 const Index = ({ logs }) => {
   return (
@@ -9,7 +9,10 @@ const Index = ({ logs }) => {
       </nav>
       <ul>
         {logs.map((log) => {
-          return <li key={log.id}>{log.name}</li>;
+          {console.log(log.title)}
+          return (
+            <li key={log.id}>{log.title}</li>
+          );
         })}
       </ul>
     </Generic>
