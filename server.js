@@ -1,22 +1,26 @@
 require("dotenv").config();
-
+const Log = require("./src/models/logSchema.js");
 const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
-
-app.use(express.urlencoded({ extended: false }));
-
 const jsxViewEngine = require("jsx-view-engine");
+const methodOverride = require("method-override");
+
 app.set("views", "src/views");
+
 app.set("view engine", "jsx");
+
 app.engine("jsx", jsxViewEngine());
 
-const methodOverride = require("method-override");
+app.use(express.static("public"));
+
 app.use(methodOverride("_method"));
 
 app.use((req, res, next) => {
   next();
 });
+
+app.use(express.urlencoded({ extended: false }));
 
 // DB CONNECTION
 mongoose.connect(process.env.MONGO_URI, {
@@ -28,12 +32,10 @@ mongoose.connection.once("open", () => {
   console.log("connected to mongo");
 });
 
-const Log = require("./src/models/logSchema");
-
 // ROUTES
 app.get("/", async (req, res) => {
   try {
-    const allLogs = await Fruit.find();
+    const allLogs = await Log.find();
     res.render("Index", { logs: allLogs });
   } catch (error) {
     console.error(error);
