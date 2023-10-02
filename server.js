@@ -46,6 +46,18 @@ app.get("/logs/new", function (req, res) {
   res.render("New");
 });
 
+app.get("/logs/:id", async function (req, res) {
+  try {
+    const foundLog = await Log.findById(req.params.id);
+    res.render("Show", {
+      log: foundLog,
+    });
+  } catch (err) {
+    res.send(err);
+    console.error(err);
+  }
+});
+
 // post data to db
 app.post("/logs", async (req, res) => {
   if (req.body.shipIsWrecked === "on") {

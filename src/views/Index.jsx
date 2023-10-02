@@ -11,7 +11,9 @@ const Index = ({ logs }) => {
         {logs.map((log) => {
           {console.log(log.title)}
           return (
-            <li key={log.id}>{log.title}</li>
+            <li key={log.id}>
+              <a href={`/logs/${log.id}`}>{log.title}</a>
+              </li>
           );
         })}
       </ul>
