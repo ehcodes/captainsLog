@@ -20,13 +20,14 @@ const Show = ({ log }) => {
         </ul>
       </nav>
       <section>
-        <h2>{log.title}</h2>
+        <h2>{log.title.toUpperCase()}</h2>
         <p><b>Is the Ship OK?</b></p>
         <p>
           {log.shipIsWrecked
             ? "No, the ship is absolutely wrecked"
             : "Yes, the ship is hanging in there."}
         </p>
+        <h2>Entry Details</h2>
         <p>{log.entry}</p>
       </section>
     </Generic>

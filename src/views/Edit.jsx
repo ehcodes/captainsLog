@@ -6,11 +6,13 @@ const Edit = ({ log }) => {
     <Generic title={log.createdAt.toString()}>
       <h2>{`Edit ${log.title}`}</h2>
       <form action={`/logs/${log.id}?_method=PUT`} method="POST">
-        <label htmlFor="name">Name</label>
-        <input type="text" name="name" defaultValue={log.name} />
-        <label htmlFor="img">Image URL</label>
-        <input type="text" name="color" defaultValue={log.img} />
-        <input type="submit" value="Submit Changes" />
+      <label htmlFor="title">Title</label>
+        <input type="text" name="title" />
+        <label htmlFor="entry">Entry</label>
+        <input type="textarea" name="entry" />
+        <label htmlFor="shipIsWrecked">Is the ship wrecked?</label>
+        <input type="checkbox" name="shipIsWrecked" />
+        <input type="submit" name="" value="Submit Log" />
       </form>
     </Generic>
   );
