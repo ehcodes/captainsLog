@@ -34,6 +34,10 @@ mongoose.connection.once("open", () => {
 
 // ROUTES
 app.get("/", async (req, res) => {
+  res.send('Welcome to the <a href="/logs">Captains Log</a>');
+});
+
+app.get("/logs", async (req, res) => {
   try {
     const allLogs = await Log.find();
     res.render("Index", { logs: allLogs });
@@ -70,6 +74,15 @@ app.post("/logs", async (req, res) => {
     return res.redirect("/logs");
   } catch (err) {
     res.send(`error in adding ${req.body}`);
+    console.error(err);
+  }
+});
+
+app.delete("/logs/:id", async (req, res) => {
+  try {
+    await Pokemon.findByIdAndRemove(req.params.id);
+    res.redirect("/logs");
+  } catch (err) {
     console.error(err);
   }
 });
