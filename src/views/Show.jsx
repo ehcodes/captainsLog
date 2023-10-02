@@ -5,17 +5,27 @@ const Show = ({ log }) => {
   return (
     <Generic title={log.createdAt.toString()}>
       <nav>
-        <a href="/">All Logs</a>
-        <form action={`/logs/${log.id}?_method=DELETE`} method="POST">
-          <input type="submit" value="Delete This Log" />
-        </form>
+        <ul>
+          <li>
+            <a href="/">All Logs</a>
+          </li>
+          <li>
+            <form action={`/logs/${log.id}?_method=DELETE`} method="POST">
+              <input type="submit" value="Delete Log" />
+            </form>
+          </li>
+          <li>
+            <a href={`/logs/${log.id}/edit`}>Edit Log</a>
+          </li>
+        </ul>
       </nav>
       <section>
         <h2>{log.title}</h2>
+        <p><b>Is the Ship OK?</b></p>
         <p>
           {log.shipIsWrecked
-            ? "The ship is absolutely wrecked"
-            : "The ship is hanging in there."}
+            ? "No, the ship is absolutely wrecked"
+            : "Yes, the ship is hanging in there."}
         </p>
         <p>{log.entry}</p>
       </section>

@@ -62,7 +62,17 @@ app.get("/logs/:id", async function (req, res) {
   }
 });
 
-// post data to db
+
+app.get("/logs/:id/edit", async (req, res) => {
+  try {
+    const foundLog = await Log.findById(req.params.id);
+    res.render("Edit", { log: foundLog });
+  } catch (err) {
+    console.error(err);
+    res.send({ msg: err.message });
+  }
+});
+
 app.post("/logs", async (req, res) => {
   if (req.body.shipIsWrecked === "on") {
     req.body.shipIsWrecked = true;
@@ -78,9 +88,19 @@ app.post("/logs", async (req, res) => {
   }
 });
 
+app.put("/logs/:id", async (req, res) => {
+  try {
+    await Log.findByIdAndUpdate(req.params.id, req.body);
+    return res.redirect(`/logs/${req.params.id}`);
+  } catch (err) {
+    res.send(`<p>Unable to edit log. Go back to all of the <a href="/logs">Captains Logs</a></p>`);
+    console.error(err);
+  }
+});
+
 app.delete("/logs/:id", async (req, res) => {
   try {
-    await Pokemon.findByIdAndRemove(req.params.id);
+    await Log.findByIdAndRemove(req.params.id);
     res.redirect("/logs");
   } catch (err) {
     console.error(err);

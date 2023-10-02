@@ -9,11 +9,20 @@ const Index = ({ logs }) => {
       </nav>
       <ul>
         {logs.map((log) => {
-          {console.log(log.title)}
           return (
             <li key={log.id}>
               <a href={`/logs/${log.id}`}>{log.title}</a>
-              </li>
+              <ul>
+                <li>
+                  <form action={`/logs/${log.id}?_method=DELETE`} method="POST">
+                    <input type="submit" value="Delete" />
+                  </form>
+                </li>
+                <li>
+                  <a href={`/logs/${log.id}/edit`}>Edit</a>
+                </li>
+              </ul>
+            </li>
           );
         })}
       </ul>
