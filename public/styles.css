@@ -1,0 +1,108 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  line-height: 1.5;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  text-align: center;
+  color: #ffffff;
+  background-color: #000000;
+  margin: 0;
+  min-height: 90vh;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: lightgray;
+  padding:.75rem;
+}
+
+nav ul a,
+nav ul form input{
+  color:black;
+  font-weight: bold;
+  padding:0;
+  border:0;
+  background-color: lightgray;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+h1,
+h2 {
+  margin: 0;
+  padding: 1rem;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+ul {
+  padding: 0;
+}
+
+input {
+  padding-bottom: 1rem;
+}
+input[name="entry"]{
+  min-height:15rem;
+}
+
+main,
+form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin:0 auto;
+}
+
+form {
+  max-width: 50%;
+}
+
+.edit input,
+.new input,
+.edit label,
+.new label {
+  font-size: 1.2rem;
+}
+
+.edit input,
+.new input {
+  min-width: 50vw;
+  padding: 0.2rem;
+  border-radius: 15px;
+}
+
+.new input[type="submit"],
+.edit input[type="submit"] {
+  min-width: fit-content;
+  padding: 0.5rem 1rem;
+  border: 0;
+  margin-top: 2rem;
+}
+
+.edit label,
+.new label {
+  padding-top: 1rem;
+}
